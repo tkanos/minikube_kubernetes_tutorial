@@ -39,7 +39,7 @@ kubectl get pod
 
 Once it's running you can see their internal IP 
 ```bash
-kubectl get svc
+kubectl get services
 ```
 
 You can't see their external IP, because it's running in a minikube
@@ -47,7 +47,7 @@ To Test you can find the ip by typing :
 ```bash
 minikube service test-nginx --url 
 ```
-![ngnix_screen1](/nginx_screen.png)
+![ngnix_screen](/nginx_screen1.png)
 
 or if you are using linux :
 ```bash
