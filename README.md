@@ -32,7 +32,7 @@ Let's begin by creating 2 replication of an nginx docker load balanced on Kubern
 ```bash
 kubectl run test-nginx --image=nginx --replicas=2 --port=80 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }'
 ```
-You can see your 2 replicas some seconds later "running" by typing
+You can see your 2 replicas some seconds later "running" by typing (if it's on 
 ```bash
 kubectl get pod
 ```
@@ -54,14 +54,37 @@ or if you are using linux :
 curl $(minikube service test-nginx --url)
 ```
 
+#### Playing with replicas
 
+Let's delete one of our pod, and see how kubernetes behave :
+So get the name of one of your pods typing :
+```bash
+kubectl get pod
+```
 
+Once you have the name :
+
+```bash
+kubectl delete pod [name]
+```
+
+And right after you will see kubernetes creating an other container to continue having 2 replicas :
+```bash
+kubectl get pod
+```
+
+#### Playing with load Balancing
+
+//todo
+
+#### Cleaning
 
 Don't forget to clean your room :
 
 ```bash
 kubectl delete deployment test-nginx
 kubectl delete svc test-nginx
+minikube stop
 ```
 
 ### Third Example
