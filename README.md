@@ -47,12 +47,14 @@ To Test you can find the ip by typing :
 ```bash
 minikube service test-nginx --url 
 ```
+![ngnix_screen](/nginx_screen.png)
+
 or if you are using linux :
 ```bash
 curl $(minikube service test-nginx --url)
 ```
 
-![ngnix_screen](/nginx_screen.png)
+
 
 
 Don't forget to clean your room :
