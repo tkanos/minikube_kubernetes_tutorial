@@ -109,7 +109,97 @@ minikube stop
 ### Third Example
 
 We will try to dockerize our own code.
-// todo
+This comes from the excellent tutorial http://kubernetes.io/docs/hellonode/, but applied to minikube
+
+Create in a directory 2 files : 
+- server.js
+- dockerfile
+
+
+Edit server.js with :
+```js
+const http = require('http');
+const handleRequest = (request, response) => {
+  console.log('Received request for URL: ' + request.url);
+  response.writeHead(200);
+  response.end('Hello World!');
+};
+const www = http.createServer(handleRequest);
+www.listen(8080);
+```
+
+Edit the dockerfile with : 
+```bash
+FROM node:4.5
+EXPOSE 8080
+COPY server.js .
+CMD node server.js
+```
+
+Now we will build your docker file inside minikube for that on your console type :
+```bash
+eval $(minikube docker-env)
+```
+
+if you do a docker images you will see that in this console you are not anymore inside your own docker, but inside the minikube one.
+
+So build your dockerfile :
+```bash
+docker build -t hellonode:v1 .
+```
+
+Now we will mount this image :
+```bash
+kubectl run test-node --image=hellonode:v1 --port=8080
+```
+
+you can see it deployed :
+```bash
+kubectl get deployments
+```
+
+you can see it running :
+```bash
+kubectl get pods
+```
+Once it is running, we will allow external traffic :
+
+```bash
+kubectl expose deployment test-node --type="LoadBalancer"
+```
+
+check :
+```bash
+kubectl get services
+```
+
+we can now test : 
+
+```bash
+curl -i $(minikube service test-node --url)
+HTTP/1.1 200 OK
+Date: Fri, 9 Dec 2016 14:57:19 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+Hello World!
+```
+
+#### Scale
+
+With Kubernetes it's easy to scale, we only need one command line :
+
+```bash
+kubectl scale deployment test-node --replicas=4
+```
+
+And in order to check :
+```bash
+kubectl get deployments
+```
+```bash
+kubectl get pods
+```
 
 ### Fourth Example
 
@@ -120,3 +210,4 @@ We will try to connect our code to a Database inside kubernetes :D
 ## Links :
 - https://github.com/kubernetes/minikube
 - http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+- http://kubernetes.io/docs/hellonode/
