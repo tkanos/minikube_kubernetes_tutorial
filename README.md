@@ -73,9 +73,28 @@ And right after you will see kubernetes creating an other container to continue 
 kubectl get pod
 ```
 
-#### Playing with load Balancing
+#### Entering in a container
 
-//todo
+check the name of your pods
+```bash
+kubectl get pod
+```
+
+Execute the following command with the name of your first pod.
+```bash
+kubectl exec -ti test-nginx [name] --bash
+```
+
+You will have the prompt commnd inside of the nginx container.
+Type : 
+```bash
+cd /usr/share/nginx.html
+rm index.html & echo "<html><body><h1>Hello World</h1></body></html>" > index.html
+exit
+```
+
+reload the page
+
 
 #### Cleaning
 
