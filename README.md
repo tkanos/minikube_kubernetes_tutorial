@@ -108,7 +108,12 @@ minikube stop
 
 ### Third Example
 
-We will try to do our own package.
+We will try to dockerize our own code.
+// todo
+
+### Fourth Example
+
+We will try to connect our code to a Database inside kubernetes :D
 // todo
 
 
