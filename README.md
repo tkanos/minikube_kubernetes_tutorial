@@ -20,10 +20,10 @@ Check that Kubernetes are running well
 kubectl cluster-info
 ```
 
-### Our first example :
+### First example :
 For your first example you can follow the one given by minikube itself : https://github.com/kubernetes/minikube#quickstart
 
-### Our second example :
+### Second example :
 We will do more fun things that this first example.
 Once minikube is started you can do everything kubernetes allow (there are a lot of tutorial in internet) with some differences that we will see throught an example :
 
@@ -32,7 +32,7 @@ Let's begin by creating 2 replication of an nginx docker load balanced on Kubern
 ```bash
 kubectl run test-nginx --image=nginx --replicas=2 --port=80 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }'
 ```
-You can see your 2 replicas, first   and some seconds later "running" by typing
+You can see your 2 replicas some seconds later "running" by typing
 ```bash
 kubectl get pod
 ```
