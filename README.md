@@ -83,7 +83,7 @@ Don't forget to clean your room :
 
 ```bash
 kubectl delete deployment test-nginx
-kubectl delete svc test-nginx
+kubectl delete service test-nginx
 minikube stop
 ```
 
