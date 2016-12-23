@@ -52,11 +52,19 @@ or if you are using linux :
 curl $(minikube service test-nginx --url)
 ```
 
-screen
-
-delete one and see
+![ngnix_screen](/nginx_screen.png)
 
 
+Don't forget to clean your room :
+
+```bash
+kubectl delete deployment test-nginx
+kubectl delete svc test-nginx
+```
+
+### Third Example
+
+// todo
 
 
 ## Links :
