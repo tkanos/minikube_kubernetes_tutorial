@@ -32,7 +32,8 @@ Let's begin by creating 2 replication of an nginx docker load balanced on Kubern
 ```bash
 kubectl run test-nginx --image=nginx --replicas=2 --port=80 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }'
 ```
-You can see your 2 replicas some seconds later "running" by typing (if it's on 
+You can see your 2 replicas some seconds later "running" by typing 
+
 ```bash
 kubectl get pod
 ```
