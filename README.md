@@ -201,14 +201,6 @@ kubectl get deployments
 kubectl get pods
 ```
 
-### Fourth Example
-
-We will try to connect our code to a Database inside kubernetes :D
-
-
-// todo
-
-
 ## Links :
 - https://github.com/kubernetes/minikube
 - http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
