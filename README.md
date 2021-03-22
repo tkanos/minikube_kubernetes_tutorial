@@ -151,7 +151,7 @@ docker build -t hellonode:v1 .
 
 Now we will mount this image :
 ```bash
-kubectl run test-node --image=hellonode:v1 --port=8080
+kubectl create deployment --image=hellonode:v1 --port=8080
 ```
 
 you can see it deployed :
