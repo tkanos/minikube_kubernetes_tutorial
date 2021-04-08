@@ -151,7 +151,7 @@ docker build -t hellonode:v1 .
 
 Now we will mount this image :
 ```bash
-kubectl run test-node --image=hellonode:v1 --port=8080
+kubectl create deployment --image=hellonode:v1 --port=8080
 ```
 
 you can see it deployed :
@@ -185,6 +185,25 @@ Transfer-Encoding: chunked
 
 Hello World!
 ```
+
+##### Minikube
+If you are running minikube, we will need to start a tunnel for the service 
+```bash
+minikube service test-node --url 
+```
+
+You should see output similar to this: 
+```bash
+🏃  Starting tunnel for service test-node.
+|-----------|-----------|-------------|------------------------|
+| NAMESPACE |   NAME    | TARGET PORT |          URL           |
+|-----------|-----------|-------------|------------------------|
+| default   | test-node |             | http://127.0.0.1:55049 |
+|-----------|-----------|-------------|------------------------|
+http://127.0.0.1:55049
+```
+
+Open the url in the browser `http://127.0.0.1:55049`
 
 #### Scale
 
